@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Mitesh Patel`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`
+      name: `Mitesh Patel`,
+      summary: `Who lives in india and works as a full-stack developer.`
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `A blog to share my learnings and online presence.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
     social: {
-      twitter: `kylemathews`
+      twitter: `miteshmap`
     }
   },
   plugins: [
@@ -60,13 +60,49 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Mitesh Patel`,
+        short_name: `miteshmap`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`
+        icons: [
+          {
+            src: "/icons/icon-48x48.png",
+            sizes: "48x48",
+            type: "image/png"
+          },
+          {
+            src: "/icons/icon-96x96.png",
+            sizes: "96x96",
+            type: "image/png"
+          },
+          {
+            src: "/icons/icon-144x144.png",
+            sizes: "144x144",
+            type: "image/png"
+          },
+          {
+            src: "/icons/icon-192x192.png",
+            sizes: "192x192",
+            type: "image/png"
+          },
+          {
+            src: "/icons/icon-256x256.png",
+            sizes: "256x256",
+            type: "image/png"
+          },
+          {
+            src: "/icons/icon-384x384.png",
+            sizes: "384x384",
+            type: "image/png"
+          },
+          {
+            src: "/icons/icon-512x512.png",
+            sizes: "512x512",
+            type: "image/png"
+          }
+        ]
       }
     },
     `gatsby-plugin-react-helmet`,
