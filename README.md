@@ -1,15 +1,11 @@
-# mitesh.dev
-
-mitesh.dev blog site.
-
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
+  <a href="https://www.mitesh.dev">
+    <img alt="miteshmap" src="./content/assets/logo.png" />
   </a>
 </p>
 <h1 align="center">
-  Gatsby's blog starter
+  mitesh.dev blog site.
 </h1>
 
 Kick off your project with this blog boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
