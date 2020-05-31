@@ -36,6 +36,10 @@ const SEO = ({ description, lang, meta, keywords, title }) => {
           content: metaDescription,
         },
         {
+          property: `og:site_name`,
+          content: title,
+        },
+        {
           property: `og:title`,
           content: metaTitle,
         },
@@ -49,7 +53,7 @@ const SEO = ({ description, lang, meta, keywords, title }) => {
         },
         {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
         },
         {
           name: `twitter:title`,
