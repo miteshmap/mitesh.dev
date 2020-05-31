@@ -47,9 +47,6 @@ const Footer = ({ title }) => (
         Copyright © {new Date().getFullYear()}  {title}.
         Built with <a href="https://www.gatsbyjs.org">Gatsby</a>
       </span>
-      <span className="footerCopyrights">
-        Starter created by <a href="https://radoslawkoziel.pl">panr</a>
-      </span>
     </>
   </footer>
 )
