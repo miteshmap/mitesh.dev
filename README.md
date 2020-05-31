@@ -4,9 +4,8 @@
     <img alt="miteshmap" src="./content/assets/logo.png" />
   </a>
 </p>
-<h1 align="center">
-  mitesh.dev blog site.
-</h1>
+
+mitesh.dev blog site. [![Netlify Status](https://api.netlify.com/api/v1/badges/bd807109-c80c-4db0-ac9c-3aa5d182efe5/deploy-status)](https://app.netlify.com/sites/miteshdev/deploys)
 
 ![Hello Friend](./content/assets/screenshot.png?raw=true)
 

@@ -34,6 +34,13 @@ module.exports = {
     ],
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-117542392-1',
+        head: true,
+      },
+    },
     `babel-preset-gatsby`,
     `gatsby-plugin-react-helmet`,
     {
