@@ -1,40 +1,53 @@
 import React, { Component } from "react"
-import logoImg from "../../content/assets/logo.png"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+  faFacebookF,
+  faTwitter,
+  faLinkedinIn,
+} from "@fortawesome/free-brands-svg-icons"
 import { Link } from "gatsby"
 
 export class Header extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-light">
-        <Link className="navbar-brand" to="/">
-          <img src={logoImg} alt="" />
-        </Link>
+      <header id="header" className="fixed-top">
+        <div className="container-fluid d-flex justify-content-between align-items-center">
 
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <Link to="/" className="nav-link">Home <span className="sr-only">(current)</span></Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/about" className="nav-link">About</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/blogs" className="nav-link">Blogs</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="https://drive.google.com/open?id=1-SkcMGMlewHEtHm7hAKTvUkYFrbmItfr" className="nav-link">Resume</Link>
-            </li>
-            <li className="nav-item">
-              <a href="mailto:miteshmap@gmail.com" className="nav-link">contact</a>
-            </li>
-
-          </ul>
+          <h1 className="logo">
+            <Link to="/">Mitesh Patel</Link>
+          </h1>
+          <nav className="nav-menu d-none d-lg-block">
+            <ul>
+              <li className="active">
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/blogs">Blogs</Link>
+              </li>
+              <li>
+                <Link to="https://drive.google.com/open?id=1-SkcMGMlewHEtHm7hAKTvUkYFrbmItfr">Resume</Link>
+              </li>
+              <li>
+                <a href="mailto:miteshmap@gmail.com">contact</a>
+              </li>
+            </ul>
+          </nav>
+          <div className="header-social-links">
+            <Link to="/" className="twitter">
+              <FontAwesomeIcon icon={faTwitter} />
+            </Link>
+            <Link to="/" className="facebook">
+              <FontAwesomeIcon icon={faFacebookF} />
+            </Link>
+            <Link to="/" className="linkedin">
+              <FontAwesomeIcon icon={faLinkedinIn} />
+            </Link>
+          </div>
         </div>
-      </nav>
+      </header >
     )
   }
 }
