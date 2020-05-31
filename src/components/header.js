@@ -1,55 +1,85 @@
-import React, { Component } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {
-  faFacebookF,
-  faTwitter,
-  faLinkedinIn,
-} from "@fortawesome/free-brands-svg-icons"
-import { Link } from "gatsby"
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
+import { Helmet } from 'react-helmet'
 
-export class Header extends Component {
-  render() {
-    return (
-      <header id="header" className="fixed-top">
-        <div className="container-fluid d-flex justify-content-between align-items-center">
+import Menu from './menu'
 
-          <h1 className="logo">
-            <Link to="/">Mitesh Patel</Link>
-          </h1>
-          <nav className="nav-menu d-none d-lg-block">
-            <ul>
-              <li className="active">
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-              <li>
-                <Link to="/blogs">Blogs</Link>
-              </li>
-              <li>
-                <Link to="https://drive.google.com/open?id=1-SkcMGMlewHEtHm7hAKTvUkYFrbmItfr">Resume</Link>
-              </li>
-              <li>
-                <a href="mailto:miteshmap@gmail.com">contact</a>
-              </li>
-            </ul>
-          </nav>
-          <div className="header-social-links">
-            <Link to="/" className="twitter">
-              <FontAwesomeIcon icon={faTwitter} />
-            </Link>
-            <Link to="/" className="facebook">
-              <FontAwesomeIcon icon={faFacebookF} />
-            </Link>
-            <Link to="/" className="linkedin">
-              <FontAwesomeIcon icon={faLinkedinIn} />
-            </Link>
-          </div>
-        </div>
-      </header >
-    )
+import style from '../styles/header.module.css'
+
+const Header = props => {
+  const {
+    siteLogo,
+    logoText,
+    mainMenu,
+    defaultTheme,
+  } = props
+  const defaultThemeState =
+    (typeof window !== 'undefined' && window.localStorage.getItem('theme')) ||
+    null
+  const [userTheme, changeTheme] = useState(defaultThemeState)
+  const [isMobileMenuVisible, toggleMobileMenu] = useState(false)
+  const onChangeTheme = () => {
+    const opositeTheme =
+      (userTheme || defaultTheme) === 'light' ? 'dark' : 'light'
+
+    changeTheme(opositeTheme)
+
+    typeof window !== 'undefined' &&
+      window.localStorage.setItem('theme', opositeTheme)
   }
+  const onToggleMobileMenu = () => toggleMobileMenu(!isMobileMenuVisible)
+
+  return (
+    <>
+      <Helmet>
+        <body
+          className={
+            (userTheme || defaultTheme) === 'light'
+              ? 'light-theme'
+              : 'dark-theme'
+          }
+        />
+      </Helmet>
+      <header className={style.header}>
+        <div className={style.inner}>
+          <Link to="/">
+            <div className={style.logo}>
+              {siteLogo.src ? (
+                <img src={siteLogo.src} alt={siteLogo.alt} />
+              ) : (
+                  <>
+                    <span className={style.mark}>></span>
+                    <span className={style.text}>{logoText}</span>
+                    <span className={style.cursor} />
+                  </>
+                )}
+            </div>
+          </Link>
+          <span className={style.right}>
+            <Menu
+              mainMenu={mainMenu}
+              isMobileMenuVisible={isMobileMenuVisible}
+              onToggleMobileMenu={onToggleMobileMenu}
+              onChangeTheme={onChangeTheme}
+            />
+          </span>
+        </div>
+      </header>
+    </>
+  )
+}
+
+Header.propTypes = {
+  siteLogo: PropTypes.object,
+  logoText: PropTypes.string,
+  defaultTheme: PropTypes.string,
+  mainMenu: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      path: PropTypes.string,
+    }),
+  ),
 }
 
 export default Header

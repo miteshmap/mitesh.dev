@@ -1,21 +1,21 @@
-import React, { Component } from "react"
-import { Link } from "gatsby"
+import React from 'react'
+import PropTypes from 'prop-types'
 
-export class Footer extends Component {
-  render() {
-    return (
-      <footer id="footer">
-        <div className="container">
-          <div className="copyright">
-            Copyrights © {new Date().getFullYear()} <b>Mitesh Patel</b>. All Rights Reserved.
-          </div>
-          <div className="credits">
-            Built with {` `} <Link to="https://www.gatsbyjs.org">Gatsby</Link>
-          </div>
-        </div>
-      </footer >
-    )
-  }
+const Footer = ({ title }) => (
+  <footer>
+    <>
+      <span className="footerCopyrights">
+        Copyright © {new Date().getFullYear()}  {title}. Built with <a href="https://www.gatsbyjs.org">Gatsby</a>
+      </span>
+      <span className="footerCopyrights">
+        Starter created by <a href="https://radoslawkoziel.pl">panr</a>
+      </span>
+    </>
+  </footer>
+)
+
+Footer.propTypes = {
+  title: PropTypes.string,
 }
 
 export default Footer

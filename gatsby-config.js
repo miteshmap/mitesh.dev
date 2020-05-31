@@ -1,113 +1,125 @@
+const postCssPresetEnv = require(`postcss-preset-env`)
+const postCSSNested = require('postcss-nested')
+const postCSSUrl = require('postcss-url')
+const postCSSImports = require('postcss-import')
+const cssnano = require('cssnano')
+const postCSSMixins = require('postcss-mixins')
+
 module.exports = {
   siteMetadata: {
     title: `Mitesh Patel`,
-    author: {
-      name: `Mitesh Patel`,
-      summary: `Who lives in india and works as a full-stack developer.`
-    },
     description: `A blog to share my learnings and online presence.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
-    social: {
-      twitter: `miteshmap`
-    }
+    copyrights: '',
+    author: `Mitesh Patel`,
+    logo: {
+      src: '',
+      alt: '',
+    },
+    logoText: 'Mitesh Patel',
+    defaultTheme: 'light',
+    postsPerPage: 5,
+    mainMenu: [
+      {
+        title: 'About',
+        path: '/about',
+      },
+      {
+        title: 'Resume',
+        path: 'https://drive.google.com/open?id=1-SkcMGMlewHEtHm7hAKTvUkYFrbmItfr',
+      },
+      {
+        title: 'Contact',
+        path: 'mailto:miteshmap@gmail.com',
+      },
+    ],
   },
   plugins: [
+    `babel-preset-gatsby`,
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`
-      }
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/assets`,
-        name: `assets`
-      }
+        name: `posts`,
+        path: `${__dirname}/src/posts`,
+      },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/src/pages`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-postcss`,
+      options: {
+        postCssPlugins: [
+          postCSSUrl(),
+          postCSSImports(),
+          postCSSMixins(),
+          postCSSNested(),
+          postCssPresetEnv({
+            importFrom: 'src/styles/variables.css',
+            stage: 1,
+            preserve: false,
+          }),
+          cssnano({
+            preset: 'default',
+          }),
+        ],
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: 'gatsby-remark-embed-video',
             options: {
-              maxWidth: 590
-            }
+              related: false,
+              noIframeBorder: true,
+            },
           },
           {
-            resolve: `gatsby-remark-responsive-iframe`,
+            resolve: `gatsby-remark-images`,
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`
-            }
+              maxWidth: 800,
+              quality: 100,
+            },
           },
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`
-        ]
-      }
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: 'language-',
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: false,
+              noInlineHighlight: false,
+            },
+          },
+        ],
+      },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
-      }
-    },
-    `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Mitesh Patel`,
+        name: `Mitessh patel`,
         short_name: `miteshmap`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
+        background_color: `#292a2d`,
+        theme_color: `#292a2d`,
         display: `minimal-ui`,
-        icons: [
-          {
-            src: "/icons/icon-48x48.png",
-            sizes: "48x48",
-            type: "image/png"
-          },
-          {
-            src: "/icons/icon-96x96.png",
-            sizes: "96x96",
-            type: "image/png"
-          },
-          {
-            src: "/icons/icon-144x144.png",
-            sizes: "144x144",
-            type: "image/png"
-          },
-          {
-            src: "/icons/icon-192x192.png",
-            sizes: "192x192",
-            type: "image/png"
-          },
-          {
-            src: "/icons/icon-256x256.png",
-            sizes: "256x256",
-            type: "image/png"
-          },
-          {
-            src: "/icons/icon-384x384.png",
-            sizes: "384x384",
-            type: "image/png"
-          },
-          {
-            src: "/icons/icon-512x512.png",
-            sizes: "512x512",
-            type: "image/png"
-          }
-        ]
-      }
+        icon: `src/images/hello-icon.png`,
+      },
     },
-    `gatsby-plugin-react-helmet`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
-  ]
+  ],
 }
