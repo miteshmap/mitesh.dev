@@ -1,6 +1,6 @@
 ---
 title: "Javascript Promise to Rescue"
-path: "/drupal-8-css-smacss-asset-libraries"
+path: "/javascript-promise-rescue"
 date: "2019-02-05"
 author: "Mitesh Patel"
 excerpt: "Recently I came across a situation in Drupal, where I'm asking user for location permission, and then I display some output based on their lat/long (displaying formatted address using google map api). so, When user visits the site next time, the result could be displayed based on location."
