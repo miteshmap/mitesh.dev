@@ -7,4 +7,4 @@ excerpt: "Facebook share button url"
 tags: ["facebook", "share"]
 ---
 
-`gist:7914634#foo.module`
+`gist:7914634`
