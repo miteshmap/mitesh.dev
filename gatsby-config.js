@@ -28,7 +28,7 @@ module.exports = {
         path: '/about',
       },
       {
-        title: 'snippets',
+        title: 'Snippets',
         path: '/snippets',
       },
       {
@@ -101,6 +101,14 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: "gatsby-remark-embed-gist",
+            options: {
+              // the github handler whose gists are to be accessed
+              username: 'miteshmap',
+              includeDefaultCss: true
+            }
+          },
+          {
             resolve: 'gatsby-remark-embed-video',
             options: {
               related: false,
@@ -124,14 +132,6 @@ module.exports = {
               noInlineHighlight: false,
             },
           },
-          {
-            resolve: "gatsby-remark-embed-gist",
-            options: {
-              // the github handler whose gists are to be accessed
-              username: 'miteshmap',
-              // includeDefaultCss: true
-            }
-          }
         ],
       },
     },
