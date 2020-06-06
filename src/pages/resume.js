@@ -41,7 +41,7 @@ export default class Resume extends Component {
           path="resume"
         />
         <div className={style.navigation} style={{ marginTop: "0px" }}>
-          <a href="../resume.pdf" download="resume-mitesh-patel" target="_blank">
+          <a href="../resume.pdf" download="resume-mitesh-patel.pdf" target="_blank">
             Download PDF
           </a>
         </div>
