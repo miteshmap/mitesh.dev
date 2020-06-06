@@ -124,13 +124,21 @@ module.exports = {
               noInlineHighlight: false,
             },
           },
+          {
+            resolve: "gatsby-remark-embed-gist",
+            options: {
+              // the github handler whose gists are to be accessed
+              username: 'miteshmap',
+              // includeDefaultCss: true
+            }
+          }
         ],
       },
     },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Mitessh patel`,
+        name: `Mitesh patel`,
         short_name: `miteshmap`,
         start_url: `/`,
         background_color: `#292a2d`,
