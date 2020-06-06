@@ -1,7 +1,7 @@
 ---
 title: "Resume"
 date: "2020-05-31"
-path: "/resume"
+path: "/dummy-resume"
 ---
 
 # Craig Davis

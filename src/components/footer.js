@@ -6,6 +6,9 @@ import {
   faLinkedinIn,
   faGithub,
 } from '@fortawesome/free-brands-svg-icons'
+import {
+  faEnvelope,
+} from '@fortawesome/free-solid-svg-icons'
 import PropTypes from 'prop-types'
 
 const Footer = ({ title }) => (
@@ -13,6 +16,13 @@ const Footer = ({ title }) => (
     <>
       <div className="social-links">
         <ul>
+          <li>
+            <a href="mailto:miteshmap@gmail.com">
+              <span className="icon">
+                <FontAwesomeIcon icon={faEnvelope} />
+              </span>
+            </a>
+          </li>
           <li>
             <a href="https://github.com/miteshmap" target="_blank" rel="noreferrer">
               <span className="icon">

@@ -25,11 +25,7 @@ module.exports = {
       },
       {
         title: 'Resume',
-        path: 'https://drive.google.com/open?id=1Dk8orXNm6PX9LRdqTuRcbFPryKo6t6Xf',
-      },
-      {
-        title: 'Contact',
-        path: 'mailto:miteshmap@gmail.com',
+        path: '/resume',
       },
     ],
   },

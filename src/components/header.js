@@ -51,7 +51,7 @@ const Header = props => {
                   <>
                     <span className={style.mark}>></span>
                     <span className={style.text}>{logoText}</span>
-                    <span className={style.cursor} />
+                    {/* <span className={style.cursor} /> */}
                   </>
                 )}
             </div>
