@@ -20,8 +20,16 @@ module.exports = {
     postsPerPage: 5,
     mainMenu: [
       {
+        title: 'Articles',
+        path: '/',
+      },
+      {
         title: 'About',
         path: '/about',
+      },
+      {
+        title: 'snippets',
+        path: '/snippets',
       },
       {
         title: 'Resume',
@@ -58,6 +66,13 @@ module.exports = {
       options: {
         name: `pages`,
         path: `${__dirname}/src/pages`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/src/snippets`,
       },
     },
     {

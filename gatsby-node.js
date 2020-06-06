@@ -8,6 +8,7 @@ const getType = node => node.fileAbsolutePath.match(pageTypeRegex)[1]
 
 const pageTemplate = path.resolve(`./src/templates/page.js`)
 const postTemplate = path.resolve(`./src/templates/post.js`)
+const snippetsTemplate = path.resolve(`./src/templates/snippets.js`)
 const indexTemplate = path.resolve(`./src/templates/index.js`)
 const tagsTemplate = path.resolve(`./src/templates/tags.js`)
 
@@ -19,6 +20,14 @@ exports.onCreateNode = ({ node, actions }) => {
         node,
         name: `slug`,
         value: `/blog${node.frontmatter.path}`,
+      })
+    }
+
+    if (node.fileAbsolutePath.indexOf('/snippets/') !== -1) {
+      createNodeField({
+        node,
+        name: `slug`,
+        value: `/snippets${node.frontmatter.path}`,
       })
     }
   }
@@ -64,6 +73,53 @@ exports.createPages = ({ actions, graphql, getNodes }) => {
       site: { siteMetadata },
     } = result.data
 
+    // Create each markdown pages
+    const sitePages = markdownPages.filter(({ node }) => !node.fields)
+
+    forEach(({ node }) => {
+      createPage({
+        path: node.frontmatter.path,
+        component: pageTemplate,
+        context: {
+          type: getType(node),
+        },
+      })
+    }, sitePages)
+
+
+    const AllSnippets = allNodes.filter(
+      ({ internal, fileAbsolutePath }) =>
+        internal.type === 'MarkdownRemark' &&
+        fileAbsolutePath.indexOf('/snippets/') !== -1,
+    )
+
+    // Create posts index with pagination
+    paginate({
+      createPage,
+      items: AllSnippets,
+      component: snippetsTemplate,
+      itemsPerPage: siteMetadata.postsPerPage,
+      pathPrefix: '/snippets',
+    })
+
+    const snippetsPosts = markdownPages.filter(({ node }) => node.fields && node.fileAbsolutePath.indexOf('/snippets/') !== -1)
+
+    // Create each markdown snippets
+    forEach(({ node }, index) => {
+      const previous = index === 0 ? null : snippetsPosts[index - 1].node
+      const next = index === snippetsPosts.length - 1 ? null : snippetsPosts[index + 1].node
+
+      createPage({
+        path: node.fields.slug,
+        component: postTemplate,
+        context: {
+          type: getType(node),
+          next,
+          previous,
+        },
+      })
+    }, snippetsPosts)
+
     const posts = allNodes.filter(
       ({ internal, fileAbsolutePath }) =>
         internal.type === 'MarkdownRemark' &&
@@ -79,8 +135,8 @@ exports.createPages = ({ actions, graphql, getNodes }) => {
       pathPrefix: '/',
     })
 
-    const blogPosts = markdownPages.filter(({ node }) => node.fields)
-    const sitePages = markdownPages.filter(({ node }) => !node.fields)
+    const blogPosts = markdownPages.filter(({ node }) => node.fields && node.fileAbsolutePath.indexOf('/posts/') !== -1)
+
     // Create each markdown post
     forEach(({ node }, index) => {
       const previous = index === 0 ? null : blogPosts[index - 1].node
@@ -96,17 +152,6 @@ exports.createPages = ({ actions, graphql, getNodes }) => {
         },
       })
     }, blogPosts)
-
-    // Create each markdown post
-    forEach(({ node }) => {
-      createPage({
-        path: node.frontmatter.path,
-        component: pageTemplate,
-        context: {
-          type: getType(node),
-        },
-      })
-    }, sitePages)
 
     // Create tag pages
     const tags = filter(
