@@ -48,7 +48,7 @@ export default class Resume extends Component {
               file="../resume.pdf"
               onLoadSuccess={this.onDocumentLoadSuccess}
             >
-            <Page pageNumber={pageNumber} scale={window.innerWidth > 768 ? 1.5 : 1.0}/>
+            <Page pageNumber={pageNumber} scale={typeof window !== 'undefined' && window.innerWidth > 768 ? 1.5 : 1.0}/>
           </Document>
           <div className={style.navigation} style={{ marginTop: "0px" }}>
             <span className={style.button}>
