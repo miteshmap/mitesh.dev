@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Document, Page } from 'react-pdf';
-import SEO from '../components/Seo';
+import SEO from '../components/seo';
 import Layout from '../components/layout'
 import style from '../styles/navigation.module.css'
 
