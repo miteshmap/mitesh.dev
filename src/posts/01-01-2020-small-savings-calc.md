@@ -1,6 +1,6 @@
 ---
-title: "Small savings calculator"
-path: "/small-savings-calc"
+title: "Javscript Small savings calculator"
+path: "/javascript-small-savings-calc"
 date: "2020-01-01"
 author: "Mitesh Patel"
 excerpt: "Small savings investment planning calculation..."
