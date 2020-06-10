@@ -60,3 +60,5 @@ add all the fonts that we want to include to avoid any unnnecessary imports. and
 ```
 
 Here `fab` is for font awesome `brands` icons, for solid icon we have to use `fas`.
+
+Ref: https://blog.logrocket.com/full-guide-to-using-font-awesome-icons-in-vue-js-apps-5574c74d9b2d/
