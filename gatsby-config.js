@@ -31,10 +31,10 @@ module.exports = {
         title: 'Snippets',
         path: '/snippets',
       },
-      {
-        title: 'Resume',
-        path: '/resume',
-      },
+//       {
+//         title: 'Resume',
+//         path: '/resume',
+//       },
     ],
   },
   plugins: [
